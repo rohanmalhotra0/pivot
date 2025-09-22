@@ -1,0 +1,52 @@
+import type { Metadata } from "next"
+import { ViewTransitions } from "next-view-transitions"
+import { TailwindIndicator } from "~/components/tailwind-indicator"
+import { ThemeProvider } from "~/components/theme-provider"
+import { ThemeSwitcher } from "~/components/theme-switcher"
+import { Toaster } from "~/components/ui/sonner"
+import { TooltipProvider } from "~/components/ui/tooltip"
+import { fontSans } from "~/lib/fonts"
+import { absoluteUrl, constructMetadata, ny } from "~/lib/utils"
+import { Toaster as DefaultToaster } from "~/registry/default/ui/toaster"
+import { Toaster as NewYorkSonner } from "~/registry/miami/ui/sonner"
+import { Toaster as NewYorkToaster } from "~/registry/miami/ui/toaster"
+import "~/styles/globals.css"
+
+export const metadata: Metadata = constructMetadata({
+   title: "PIVOT - Physics-Driven Innovation",
+   description:
+      "At PIVOT, we specialize in applying physics across engineering, economics, and philanthropy. A Virginia Tech nonprofit organization pioneering solutions for global challenges.",
+   image: absoluteUrl("/api/og"),
+})
+
+export default function RootLayout({
+   children,
+}: {
+   children: React.ReactNode
+}) {
+   return (
+      <ViewTransitions>
+         <html lang="en" suppressHydrationWarning>
+            <head />
+            <body
+               className={ny(
+                  "bg-background relative flex min-h-screen w-full flex-col justify-center overflow-x-hidden scroll-smooth font-sans antialiased",
+                  fontSans.variable,
+               )}
+            >
+               <ThemeProvider attribute="class" defaultTheme="dark">
+                  <TooltipProvider>
+                     {children}
+                     <Toaster />
+                  </TooltipProvider>
+                  <TailwindIndicator />
+                  <ThemeSwitcher />
+                  <NewYorkToaster />
+                  <DefaultToaster />
+                  <NewYorkSonner />
+               </ThemeProvider>
+            </body>
+         </html>
+      </ViewTransitions>
+   )
+}

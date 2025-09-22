@@ -1,0 +1,41 @@
+{
+   "$schema": "https://turbo.build/schema.json",
+   "tasks": {
+      "build": {
+         "dependsOn": ["^build"],
+         "inputs": [
+            "$TURBO_DEFAULT$",
+            ".env",
+            ".env.*",
+            "V0_URL",
+            "V0_EDIT_SECRET"
+         ],
+         "outputs": [".next/**", "!.next/cache/**"]
+      },
+      "dev": {
+         "cache": false,
+         "persistent": true
+      },
+      "preview": {
+         "env": ["NEXT_PUBLIC_APP_URL"],
+         "outputs": ["dist/**", ".next/**"]
+      },
+      "start": {
+         "dependsOn": ["^build"]
+      },
+      "check-types": {
+         "cache": false
+      },
+      "typecheck": {},
+      "check": {
+         "dependsOn": ["^check"]
+      },
+      "check:fix": {
+         "dependsOn": ["^check:fix"]
+      },
+      "test": {
+         "cache": false,
+         "outputs": []
+      }
+   }
+}
