@@ -5,7 +5,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React from "react"
 import { Icons } from "~/components/icons"
-import { Badge } from "~/components/ui/badge"
 import { docsConfig } from "~/config/docs"
 import { siteConfig } from "~/config/site"
 import { ny } from "~/lib/utils"
@@ -31,7 +30,6 @@ export function MainNav() {
             <span className="hidden font-bold md:inline-block">
                {siteConfig.name}
             </span>
-            <Badge variant="secondary">Nonprofit</Badge>
          </Link>
          <nav className="hidden items-center space-x-6 text-sm font-medium xl:flex">
             {docsConfig.mainNav.map((item) =>

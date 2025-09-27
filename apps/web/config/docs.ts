@@ -21,29 +21,8 @@ export const docsConfig: DocsConfig = {
          href: "/projects",
       },
       {
-         title: "Impact",
-         href: "/impact",
-      },
-      {
-         title: "Join",
-         href: "/join",
-      },
-      {
-         title: "Resources",
-         items: [
-            {
-               title: "Publications",
-               href: "/publications",
-            },
-            {
-               title: "Events",
-               href: "/events",
-            },
-            {
-               title: "News",
-               href: "/news",
-            },
-         ],
+         title: "Contact",
+         href: "/contact",
       },
    ],
    sidebarNav: [
